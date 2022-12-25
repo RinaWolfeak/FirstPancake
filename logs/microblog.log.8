@@ -1,4 +1,4 @@
-2022-12-15 21:13:55,095 ERROR: Exception on /search [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
+2022-12-18 14:13:45,085 ERROR: Exception on /search [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
 Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -21,20 +21,16 @@ Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\app\models.py", line 15, in search
     ids, total = query_index(cls.__tablename__, expression, page, per_page)
                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\search.py", line 21, in query_index
-    search = current_app.elasticsearch.search(
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\elasticsearch\_sync\client\utils.py", line 414, in wrapped
-    return api(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\elasticsearch\_sync\client\__init__.py", line 3770, in search
-    return self.perform_request(  # type: ignore[return-value]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\elasticsearch\_sync\client\_base.py", line 321, in perform_request
-    raise HTTP_EXCEPTIONS.get(meta.status, ApiError)(
-elasticsearch.NotFoundError: NotFoundError(404, 'index_not_found_exception', 'no such index [post]', post, index_or_alias)
-2022-12-15 21:14:44,350 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:81]
-2022-12-15 21:14:49,544 ERROR: Exception on /search [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
+  File "C:\Users\wolfe\microblog\app\search.py", line 39, in query_index
+    search = OpenSearch.search(
+             ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\client\utils.py", line 178, in _wrapped
+    return func(*args, params=params, headers=headers, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: OpenSearch.search() missing 1 required positional argument: 'self'
+2022-12-18 14:35:31,313 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:75]
+2022-12-18 14:42:32,201 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:75]
+2022-12-18 14:42:46,606 ERROR: Exception on /search [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
 Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -57,26 +53,26 @@ Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\app\models.py", line 15, in search
     ids, total = query_index(cls.__tablename__, expression, page, per_page)
                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\search.py", line 21, in query_index
-    search = current_app.elasticsearch.search(
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\elasticsearch\_sync\client\utils.py", line 414, in wrapped
-    return api(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\elasticsearch\_sync\client\__init__.py", line 3770, in search
-    return self.perform_request(  # type: ignore[return-value]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\elasticsearch\_sync\client\_base.py", line 286, in perform_request
-    meta, resp_body = self.transport.perform_request(
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\elastic_transport\_transport.py", line 329, in perform_request
-    meta, raw_data = node.perform_request(
-                     ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\elastic_transport\_node\_http_urllib3.py", line 199, in perform_request
-    raise err from None
-elastic_transport.TlsError: TLS error caused by: TlsError(TLS error caused by: SSLError([Errno 2] No such file or directory))
-2022-12-15 21:34:25,137 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:81]
-2022-12-15 21:34:30,713 ERROR: Exception on /search [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
+  File "C:\Users\wolfe\microblog\app\search.py", line 39, in query_index
+    search = current_app.OpenSearch.search(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\client\utils.py", line 178, in _wrapped
+    return func(*args, params=params, headers=headers, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\client\__init__.py", line 1551, in search
+    return self.transport.perform_request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\transport.py", line 408, in perform_request
+    raise e
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\transport.py", line 369, in perform_request
+    status, headers_response, data = connection.perform_request(
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\connection\http_urllib3.py", line 266, in perform_request
+    self._raise_error(
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\connection\base.py", line 301, in _raise_error
+    raise HTTP_EXCEPTIONS.get(status_code, TransportError)(
+opensearchpy.exceptions.NotFoundError: NotFoundError(404, 'index_not_found_exception', 'no such index [post]', post, index_or_alias)
+2022-12-18 14:43:16,694 ERROR: Exception on /search [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
 Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -99,22 +95,22 @@ Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\app\models.py", line 15, in search
     ids, total = query_index(cls.__tablename__, expression, page, per_page)
                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\search.py", line 21, in query_index
-    search = current_app.elasticsearch.search(
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\elasticsearch\_sync\client\utils.py", line 414, in wrapped
-    return api(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\elasticsearch\_sync\client\__init__.py", line 3770, in search
-    return self.perform_request(  # type: ignore[return-value]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\elasticsearch\_sync\client\_base.py", line 286, in perform_request
-    meta, resp_body = self.transport.perform_request(
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\elastic_transport\_transport.py", line 329, in perform_request
-    meta, raw_data = node.perform_request(
-                     ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\elastic_transport\_node\_http_urllib3.py", line 199, in perform_request
-    raise err from None
-elastic_transport.TlsError: TLS error caused by: TlsError(TLS error caused by: SSLError([Errno 2] No such file or directory))
-2022-12-15 21:42:25,452 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:81]
+  File "C:\Users\wolfe\microblog\app\search.py", line 39, in query_index
+    search = current_app.OpenSearch.search(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\client\utils.py", line 178, in _wrapped
+    return func(*args, params=params, headers=headers, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\client\__init__.py", line 1551, in search
+    return self.transport.perform_request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\transport.py", line 408, in perform_request
+    raise e
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\transport.py", line 369, in perform_request
+    status, headers_response, data = connection.perform_request(
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\connection\http_urllib3.py", line 266, in perform_request
+    self._raise_error(
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\connection\base.py", line 301, in _raise_error
+    raise HTTP_EXCEPTIONS.get(status_code, TransportError)(
+opensearchpy.exceptions.NotFoundError: NotFoundError(404, 'index_not_found_exception', 'no such index [post]', post, index_or_alias)

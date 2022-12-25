@@ -1,5 +1,4 @@
-2022-12-14 22:15:52,764 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:81]
-2022-12-14 22:16:14,643 ERROR: Exception on /search [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
+2022-12-15 21:53:23,440 ERROR: Exception on /search [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
 Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -39,9 +38,9 @@ Traceback (most recent call last):
                      ^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\elastic_transport\_node\_http_urllib3.py", line 199, in perform_request
     raise err from None
-elastic_transport.ConnectionError: Connection error caused by: ConnectionError(Connection error caused by: NewConnectionError(<urllib3.connection.HTTPSConnection object at 0x000001EEBC3BB5D0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение))
-2022-12-14 22:22:14,188 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:81]
-2022-12-14 22:22:18,588 ERROR: Exception on /search [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
+elastic_transport.TlsError: TLS error caused by: TlsError(TLS error caused by: SSLError([SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:992)))
+2022-12-15 21:55:57,593 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:81]
+2022-12-15 21:56:05,612 ERROR: Exception on /search [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
 Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -81,9 +80,9 @@ Traceback (most recent call last):
                      ^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\elastic_transport\_node\_http_urllib3.py", line 199, in perform_request
     raise err from None
-elastic_transport.TlsError: TLS error caused by: TlsError(TLS error caused by: SSLError([Errno 2] No such file or directory))
-2022-12-14 22:29:06,237 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:81]
-2022-12-14 22:29:15,587 ERROR: Exception on /search [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
+elastic_transport.TlsError: TLS error caused by: TlsError(TLS error caused by: SSLError([SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:992)))
+2022-12-15 21:59:05,362 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:77]
+2022-12-15 21:59:13,447 ERROR: Exception on /search [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
 Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -115,13 +114,7 @@ Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\elasticsearch\_sync\client\__init__.py", line 3770, in search
     return self.perform_request(  # type: ignore[return-value]
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\elasticsearch\_sync\client\_base.py", line 286, in perform_request
-    meta, resp_body = self.transport.perform_request(
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\elastic_transport\_transport.py", line 329, in perform_request
-    meta, raw_data = node.perform_request(
-                     ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\elastic_transport\_node\_http_urllib3.py", line 199, in perform_request
-    raise err from None
-elastic_transport.TlsError: TLS error caused by: TlsError(TLS error caused by: SSLError([Errno 2] No such file or directory))
-2022-12-15 20:46:31,486 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:81]
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\elasticsearch\_sync\client\_base.py", line 321, in perform_request
+    raise HTTP_EXCEPTIONS.get(meta.status, ApiError)(
+elasticsearch.NotFoundError: NotFoundError(404, 'index_not_found_exception', 'no such index [post]', post, index_or_alias)
+2022-12-17 19:48:08,812 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:74]

@@ -1,4 +1,4 @@
-2022-12-15 20:47:17,263 ERROR: Exception on /search [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
+2022-12-17 19:48:24,487 ERROR: Exception on /search [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
 Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -21,26 +21,15 @@ Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\app\models.py", line 15, in search
     ids, total = query_index(cls.__tablename__, expression, page, per_page)
                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\search.py", line 21, in query_index
-    search = current_app.elasticsearch.search(
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\elasticsearch\_sync\client\utils.py", line 414, in wrapped
-    return api(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\elasticsearch\_sync\client\__init__.py", line 3770, in search
-    return self.perform_request(  # type: ignore[return-value]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\elasticsearch\_sync\client\_base.py", line 286, in perform_request
-    meta, resp_body = self.transport.perform_request(
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\elastic_transport\_transport.py", line 329, in perform_request
-    meta, raw_data = node.perform_request(
-                     ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\elastic_transport\_node\_http_urllib3.py", line 199, in perform_request
-    raise err from None
-elastic_transport.ConnectionError: Connection error caused by: ConnectionError(Connection error caused by: NewConnectionError(<urllib3.connection.HTTPSConnection object at 0x00000191870EF890>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение))
-2022-12-15 21:01:38,716 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:81]
-2022-12-15 21:01:46,930 ERROR: Exception on /search [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
+  File "C:\Users\wolfe\microblog\app\search.py", line 27, in query_index
+    search = OpenSearch.search(
+             ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\client\utils.py", line 178, in _wrapped
+    return func(*args, params=params, headers=headers, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: OpenSearch.search() missing 1 required positional argument: 'self'
+2022-12-17 19:55:01,544 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:74]
+2022-12-17 19:55:09,203 ERROR: Exception on /search [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
 Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -63,26 +52,15 @@ Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\app\models.py", line 15, in search
     ids, total = query_index(cls.__tablename__, expression, page, per_page)
                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\search.py", line 21, in query_index
-    search = current_app.elasticsearch.search(
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\elasticsearch\_sync\client\utils.py", line 414, in wrapped
-    return api(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\elasticsearch\_sync\client\__init__.py", line 3770, in search
-    return self.perform_request(  # type: ignore[return-value]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\elasticsearch\_sync\client\_base.py", line 286, in perform_request
-    meta, resp_body = self.transport.perform_request(
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\elastic_transport\_transport.py", line 329, in perform_request
-    meta, raw_data = node.perform_request(
-                     ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\elastic_transport\_node\_http_urllib3.py", line 199, in perform_request
-    raise err from None
-elastic_transport.TlsError: TLS error caused by: TlsError(TLS error caused by: SSLError([Errno 2] No such file or directory))
-2022-12-15 21:09:08,893 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:77]
-2022-12-15 21:09:15,936 ERROR: Exception on /search [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
+  File "C:\Users\wolfe\microblog\app\search.py", line 27, in query_index
+    search = OpenSearch.search(
+             ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\client\utils.py", line 178, in _wrapped
+    return func(*args, params=params, headers=headers, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: OpenSearch.search() missing 1 required positional argument: 'self'
+2022-12-17 20:40:32,388 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:74]
+2022-12-17 20:40:37,589 ERROR: Exception on /search [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
 Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -105,16 +83,42 @@ Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\app\models.py", line 15, in search
     ids, total = query_index(cls.__tablename__, expression, page, per_page)
                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\search.py", line 21, in query_index
-    search = current_app.elasticsearch.search(
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\elasticsearch\_sync\client\utils.py", line 414, in wrapped
-    return api(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\elasticsearch\_sync\client\__init__.py", line 3770, in search
-    return self.perform_request(  # type: ignore[return-value]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\elasticsearch\_sync\client\_base.py", line 321, in perform_request
-    raise HTTP_EXCEPTIONS.get(meta.status, ApiError)(
-elasticsearch.NotFoundError: NotFoundError(404, 'index_not_found_exception', 'no such index [post]', post, index_or_alias)
-2022-12-15 21:13:49,882 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:77]
+  File "C:\Users\wolfe\microblog\app\search.py", line 27, in query_index
+    search = OpenSearch.search(
+             ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\client\utils.py", line 178, in _wrapped
+    return func(*args, params=params, headers=headers, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: OpenSearch.search() missing 1 required positional argument: 'self'
+2022-12-17 20:46:40,518 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:74]
+2022-12-17 20:46:46,457 ERROR: Exception on /search [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
+Traceback (most recent call last):
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\app\main\routes.py", line 154, in search
+    posts, total = Post.search(g.search_form.q.data, page,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\app\models.py", line 15, in search
+    ids, total = query_index(cls.__tablename__, expression, page, per_page)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\app\search.py", line 39, in query_index
+    search = OpenSearch.search(
+             ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\client\utils.py", line 178, in _wrapped
+    return func(*args, params=params, headers=headers, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: OpenSearch.search() missing 1 required positional argument: 'self'
+2022-12-18 14:13:40,218 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:74]

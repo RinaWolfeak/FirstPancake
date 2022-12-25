@@ -1,4 +1,4 @@
-2022-12-20 20:05:32,287 ERROR: Exception on /search [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
+2022-12-25 16:06:23,681 ERROR: Exception on /index [POST] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
 Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\urllib3\connection.py", line 174, in _new_conn
     conn = connection.create_connection(
@@ -45,7 +45,7 @@ Traceback (most recent call last):
            ^^^^^^^^^^^^^^^^
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\urllib3\connection.py", line 186, in _new_conn
     raise NewConnectionError(
-urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x000001D0197096D0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x000001B968DA29D0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение
 
 During handling of the above exception, another exception occurred:
 
@@ -65,19 +65,23 @@ Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\main\routes.py", line 154, in search
-    posts, total = Post.search(g.search_form.q.data, page,
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\models.py", line 15, in search
-    ids, total = query_index(cls.__tablename__, expression, page, per_page)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\search.py", line 39, in query_index
-    search = current_app.OpenSearch.search(
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\app\main\routes.py", line 36, in index
+    db.session.commit()
+  File "<string>", line 2, in commit
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1451, in commit
+    self._transaction.commit(_to_root=self.future)
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 839, in commit
+    self.session.dispatch.after_commit(self.session)
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\sqlalchemy\event\attr.py", line 247, in __call__
+    fn(*args, **kw)
+  File "C:\Users\wolfe\microblog\app\models.py", line 36, in after_commit
+    add_to_index(obj.__tablename__, obj)
+  File "C:\Users\wolfe\microblog\app\search.py", line 27, in add_to_index
+    current_app.OpenSearch.index(index=index, id=model.id, body=payload)
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\client\utils.py", line 178, in _wrapped
     return func(*args, params=params, headers=headers, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\client\__init__.py", line 1551, in search
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\client\__init__.py", line 355, in index
     return self.transport.perform_request(
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\transport.py", line 406, in perform_request
@@ -87,4 +91,4 @@ Traceback (most recent call last):
                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\connection\http_urllib3.py", line 255, in perform_request
     raise ConnectionError("N/A", str(e), e)
-opensearchpy.exceptions.ConnectionError: ConnectionError(<urllib3.connection.HTTPConnection object at 0x000001D0197096D0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение) caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x000001D0197096D0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение)
+opensearchpy.exceptions.ConnectionError: ConnectionError(<urllib3.connection.HTTPConnection object at 0x000001B968DA29D0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение) caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x000001B968DA29D0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение)
