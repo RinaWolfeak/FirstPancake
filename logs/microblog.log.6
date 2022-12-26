@@ -1,98 +1,4 @@
-2022-12-18 14:54:51,021 ERROR: Exception on /search [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
-Traceback (most recent call last):
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\urllib3\connectionpool.py", line 703, in urlopen
-    httplib_response = self._make_request(
-                       ^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\urllib3\connectionpool.py", line 449, in _make_request
-    six.raise_from(e, None)
-  File "<string>", line 3, in raise_from
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\urllib3\connectionpool.py", line 444, in _make_request
-    httplib_response = conn.getresponse()
-                       ^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 1374, in getresponse
-    response.begin()
-  File "C:\Users\wolfe\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 318, in begin
-    version, status, reason = self._read_status()
-                              ^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 287, in _read_status
-    raise RemoteDisconnected("Remote end closed connection without"
-http.client.RemoteDisconnected: Remote end closed connection without response
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\connection\http_urllib3.py", line 240, in perform_request
-    response = self.pool.urlopen(
-               ^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
-    retries = retries.increment(
-              ^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\urllib3\util\retry.py", line 525, in increment
-    raise six.reraise(type(error), error, _stacktrace)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\urllib3\packages\six.py", line 769, in reraise
-    raise value.with_traceback(tb)
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\urllib3\connectionpool.py", line 703, in urlopen
-    httplib_response = self._make_request(
-                       ^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\urllib3\connectionpool.py", line 449, in _make_request
-    six.raise_from(e, None)
-  File "<string>", line 3, in raise_from
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\urllib3\connectionpool.py", line 444, in _make_request
-    httplib_response = conn.getresponse()
-                       ^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 1374, in getresponse
-    response.begin()
-  File "C:\Users\wolfe\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 318, in begin
-    version, status, reason = self._read_status()
-                              ^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 287, in _read_status
-    raise RemoteDisconnected("Remote end closed connection without"
-urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
-    response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\main\routes.py", line 154, in search
-    posts, total = Post.search(g.search_form.q.data, page,
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\models.py", line 15, in search
-    ids, total = query_index(cls.__tablename__, expression, page, per_page)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\search.py", line 39, in query_index
-    search = current_app.OpenSearch.search(
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\client\utils.py", line 178, in _wrapped
-    return func(*args, params=params, headers=headers, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\client\__init__.py", line 1551, in search
-    return self.transport.perform_request(
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\transport.py", line 406, in perform_request
-    raise e
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\transport.py", line 369, in perform_request
-    status, headers_response, data = connection.perform_request(
-                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\connection\http_urllib3.py", line 255, in perform_request
-    raise ConnectionError("N/A", str(e), e)
-opensearchpy.exceptions.ConnectionError: ConnectionError(('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))) caused by: ProtocolError(('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')))
-2022-12-18 14:59:37,682 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:75]
-2022-12-18 14:59:43,966 ERROR: Exception on /search [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
+2022-12-18 15:01:23,243 ERROR: Exception on /search [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
 Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -134,3 +40,91 @@ Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\connection\base.py", line 301, in _raise_error
     raise HTTP_EXCEPTIONS.get(status_code, TransportError)(
 opensearchpy.exceptions.NotFoundError: NotFoundError(404, 'index_not_found_exception', 'no such index [post]', post, index_or_alias)
+2022-12-18 15:07:15,949 ERROR: Exception on /search [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
+Traceback (most recent call last):
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\app\main\routes.py", line 154, in search
+    posts, total = Post.search(g.search_form.q.data, page,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\app\models.py", line 15, in search
+    ids, total = query_index(cls.__tablename__, expression, page, per_page)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\app\search.py", line 39, in query_index
+    search = current_app.OpenSearch.search(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\client\utils.py", line 178, in _wrapped
+    return func(*args, params=params, headers=headers, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\client\__init__.py", line 1551, in search
+    return self.transport.perform_request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\transport.py", line 408, in perform_request
+    raise e
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\transport.py", line 369, in perform_request
+    status, headers_response, data = connection.perform_request(
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\connection\http_urllib3.py", line 266, in perform_request
+    self._raise_error(
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\connection\base.py", line 301, in _raise_error
+    raise HTTP_EXCEPTIONS.get(status_code, TransportError)(
+opensearchpy.exceptions.NotFoundError: NotFoundError(404, 'index_not_found_exception', 'no such index [post]', post, index_or_alias)
+2022-12-18 15:08:01,716 ERROR: Exception on /search [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
+Traceback (most recent call last):
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\app\main\routes.py", line 154, in search
+    posts, total = Post.search(g.search_form.q.data, page,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\app\models.py", line 15, in search
+    ids, total = query_index(cls.__tablename__, expression, page, per_page)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\app\search.py", line 39, in query_index
+    search = current_app.OpenSearch.search(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\client\utils.py", line 178, in _wrapped
+    return func(*args, params=params, headers=headers, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\client\__init__.py", line 1551, in search
+    return self.transport.perform_request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\transport.py", line 408, in perform_request
+    raise e
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\transport.py", line 369, in perform_request
+    status, headers_response, data = connection.perform_request(
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\connection\http_urllib3.py", line 266, in perform_request
+    self._raise_error(
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\connection\base.py", line 301, in _raise_error
+    raise HTTP_EXCEPTIONS.get(status_code, TransportError)(
+opensearchpy.exceptions.NotFoundError: NotFoundError(404, 'index_not_found_exception', 'no such index [post]', post, index_or_alias)
+2022-12-18 15:13:30,474 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:75]
+2022-12-20 20:03:25,404 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:75]
+2022-12-20 20:04:48,864 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:75]
+2022-12-20 20:04:57,122 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:75]
