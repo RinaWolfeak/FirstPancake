@@ -1,4 +1,4 @@
-2022-12-25 15:12:34,982 ERROR: Exception on /user/John/popup [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
+2022-12-25 15:59:45,993 ERROR: Exception on /user/susan/popup [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
 Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -34,80 +34,8 @@ Traceback (most recent call last):
     return getattr(obj, attribute)
            ^^^^^^^^^^^^^^^^^^^^^^^
 jinja2.exceptions.UndefinedError: 'form' is undefined
-2022-12-25 15:13:14,307 ERROR: Exception on /user/susan/popup [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
-Traceback (most recent call last):
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
-    response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\main\routes.py", line 88, in user_popup
-    return render_template('user_popup.html', user=user)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\templating.py", line 147, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\templating.py", line 130, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\jinja2\environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\jinja2\environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "C:\Users\wolfe\microblog\app\templates\user_popup.html", line 23, in top-level template code
-    {{ form.hidden_tag() }}
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\jinja2\environment.py", line 485, in getattr
-    return getattr(obj, attribute)
-           ^^^^^^^^^^^^^^^^^^^^^^^
-jinja2.exceptions.UndefinedError: 'form' is undefined
-2022-12-25 15:18:37,832 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:75]
-2022-12-25 15:18:45,492 ERROR: Exception on /user/susan/popup [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
-Traceback (most recent call last):
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
-    response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\main\routes.py", line 88, in user_popup
-    return render_template('user_popup.html', user=user)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\templating.py", line 147, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\templating.py", line 130, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\jinja2\environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\jinja2\environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "C:\Users\wolfe\microblog\app\templates\user_popup.html", line 23, in top-level template code
-    {{ form.hidden_tag() }}
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\jinja2\environment.py", line 485, in getattr
-    return getattr(obj, attribute)
-           ^^^^^^^^^^^^^^^^^^^^^^^
-jinja2.exceptions.UndefinedError: 'form' is undefined
-2022-12-25 15:20:06,212 ERROR: Exception on /user/susan/popup [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
+2022-12-25 16:04:33,413 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:75]
+2022-12-25 16:04:49,181 ERROR: Exception on /user/susan/popup [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
 Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()

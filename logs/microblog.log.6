@@ -1,4 +1,54 @@
-2022-12-18 15:01:23,243 ERROR: Exception on /search [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
+2022-12-20 20:05:32,287 ERROR: Exception on /search [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
+Traceback (most recent call last):
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\urllib3\connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\urllib3\util\connection.py", line 95, in create_connection
+    raise err
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\connection\http_urllib3.py", line 240, in perform_request
+    response = self.pool.urlopen(
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\urllib3\util\retry.py", line 525, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\urllib3\packages\six.py", line 770, in reraise
+    raise value
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\urllib3\connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\urllib3\connectionpool.py", line 398, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\urllib3\connection.py", line 239, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "C:\Users\wolfe\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 1282, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Users\wolfe\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 1328, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Users\wolfe\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\wolfe\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 1037, in _send_output
+    self.send(msg)
+  File "C:\Users\wolfe\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 975, in send
+    self.connect()
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\urllib3\connection.py", line 205, in connect
+    conn = self._new_conn()
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\urllib3\connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x000001D0197096D0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение
+
+During handling of the above exception, another exception occurred:
+
 Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -30,17 +80,18 @@ Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\client\__init__.py", line 1551, in search
     return self.transport.perform_request(
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\transport.py", line 408, in perform_request
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\transport.py", line 406, in perform_request
     raise e
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\transport.py", line 369, in perform_request
     status, headers_response, data = connection.perform_request(
                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\connection\http_urllib3.py", line 266, in perform_request
-    self._raise_error(
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\connection\base.py", line 301, in _raise_error
-    raise HTTP_EXCEPTIONS.get(status_code, TransportError)(
-opensearchpy.exceptions.NotFoundError: NotFoundError(404, 'index_not_found_exception', 'no such index [post]', post, index_or_alias)
-2022-12-18 15:07:15,949 ERROR: Exception on /search [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\connection\http_urllib3.py", line 255, in perform_request
+    raise ConnectionError("N/A", str(e), e)
+opensearchpy.exceptions.ConnectionError: ConnectionError(<urllib3.connection.HTTPConnection object at 0x000001D0197096D0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение) caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x000001D0197096D0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение)
+2022-12-25 14:23:42,069 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:75]
+2022-12-25 14:43:02,753 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:75]
+2022-12-25 15:11:57,476 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:75]
+2022-12-25 15:12:03,882 ERROR: Exception on /user/John/popup [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
 Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -57,74 +108,22 @@ Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\main\routes.py", line 154, in search
-    posts, total = Post.search(g.search_form.q.data, page,
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\models.py", line 15, in search
-    ids, total = query_index(cls.__tablename__, expression, page, per_page)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\search.py", line 39, in query_index
-    search = current_app.OpenSearch.search(
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\client\utils.py", line 178, in _wrapped
-    return func(*args, params=params, headers=headers, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\client\__init__.py", line 1551, in search
-    return self.transport.perform_request(
+  File "C:\Users\wolfe\microblog\app\main\routes.py", line 88, in user_popup
+    return render_template('user_popup.html', user=user)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\templating.py", line 147, in render_template
+    return _render(app, template, context)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\transport.py", line 408, in perform_request
-    raise e
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\transport.py", line 369, in perform_request
-    status, headers_response, data = connection.perform_request(
-                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\connection\http_urllib3.py", line 266, in perform_request
-    self._raise_error(
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\connection\base.py", line 301, in _raise_error
-    raise HTTP_EXCEPTIONS.get(status_code, TransportError)(
-opensearchpy.exceptions.NotFoundError: NotFoundError(404, 'index_not_found_exception', 'no such index [post]', post, index_or_alias)
-2022-12-18 15:08:01,716 ERROR: Exception on /search [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
-Traceback (most recent call last):
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
-    response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\main\routes.py", line 154, in search
-    posts, total = Post.search(g.search_form.q.data, page,
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\models.py", line 15, in search
-    ids, total = query_index(cls.__tablename__, expression, page, per_page)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\search.py", line 39, in query_index
-    search = current_app.OpenSearch.search(
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\client\utils.py", line 178, in _wrapped
-    return func(*args, params=params, headers=headers, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\client\__init__.py", line 1551, in search
-    return self.transport.perform_request(
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\transport.py", line 408, in perform_request
-    raise e
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\transport.py", line 369, in perform_request
-    status, headers_response, data = connection.perform_request(
-                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\connection\http_urllib3.py", line 266, in perform_request
-    self._raise_error(
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\connection\base.py", line 301, in _raise_error
-    raise HTTP_EXCEPTIONS.get(status_code, TransportError)(
-opensearchpy.exceptions.NotFoundError: NotFoundError(404, 'index_not_found_exception', 'no such index [post]', post, index_or_alias)
-2022-12-18 15:13:30,474 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:75]
-2022-12-20 20:03:25,404 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:75]
-2022-12-20 20:04:48,864 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:75]
-2022-12-20 20:04:57,122 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:75]
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\templating.py", line 130, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\wolfe\microblog\app\templates\user_popup.html", line 23, in top-level template code
+    {{ form.hidden_tag() }}
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\jinja2\environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'form' is undefined
