@@ -6,15 +6,10 @@ from flask import current_app
 
 
 def translate(text, target_language):
-    # FIX START
-    data = '{"yandexPassportOauthToken":"AgAEA7qg9V7GAATuwSUhR7WRzk6bi4Zd-ff7sv4"}'
-
-    response = requests.post('https://iam.api.cloud.yandex.net/iam/v1/tokens', data=data)
-
-    # FIX STOP
+ 
     
     IAM_TOKEN = response.json()['iamToken']
-    folder_id = 'b1gtig6qr3fa3u537d8p'
+    folder_id = ''
     texts = text
     target_language = 'en'
 
