@@ -1,4 +1,4 @@
-2023-01-03 14:54:46,709 ERROR: Exception on /api/users/1 [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
+2022-12-25 16:10:12,558 ERROR: Exception on /user/susan/popup [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
 Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,14 +12,30 @@ Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\api\users.py", line 7, in get_user
-    return jsonify(User.query.get_or_404(id).to_dict())
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\models.py", line 177, in to_dict
-    'last_seen': self.last_seen.isoformat() + 'Z',
-                 ^^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'NoneType' object has no attribute 'isoformat'
-2023-01-03 14:55:10,424 ERROR: Exception on /api/users/1 [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\app\main\routes.py", line 88, in user_popup
+    return render_template('user_popup.html', user=user)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\templating.py", line 147, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\templating.py", line 130, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\wolfe\microblog\app\templates\user_popup.html", line 16, in top-level template code
+    {{ form.hidden_tag() }}
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\jinja2\environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'form' is undefined
+2022-12-26 15:41:25,467 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:75]
+2022-12-26 15:42:12,552 ERROR: Exception on /user/John/popup [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
 Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -33,15 +49,30 @@ Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\api\users.py", line 7, in get_user
-    return jsonify(User.query.get_or_404(id).to_dict())
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\models.py", line 177, in to_dict
-    'last_seen': self.last_seen.isoformat() + 'Z',
-                 ^^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'NoneType' object has no attribute 'isoformat'
-2023-01-03 15:49:45,128 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:77]
-2023-01-03 15:50:15,530 ERROR: Exception on /api/users/1 [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\app\main\routes.py", line 88, in user_popup
+    return render_template('user_popup.html', user=user)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\templating.py", line 147, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\templating.py", line 130, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\wolfe\microblog\app\templates\user_popup.html", line 23, in top-level template code
+    {{ form.hidden_tag() }}
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\jinja2\environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'form' is undefined
+2022-12-26 15:46:46,555 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:75]
+2022-12-26 15:46:52,734 ERROR: Exception on /user/John/popup [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
 Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -55,14 +86,39 @@ Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\api\users.py", line 7, in get_user
-    return jsonify(User.query.get_or_404(id).to_dict())
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\models.py", line 177, in to_dict
-    'last_seen': self.last_seen.isoformat() + 'Z',
-                 ^^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'NoneType' object has no attribute 'isoformat'
-2023-01-03 15:50:15,670 ERROR: Exception on /api/users/1 [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\app\main\routes.py", line 88, in user_popup
+    return render_template('user_popup.html', user=user)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\templating.py", line 147, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\templating.py", line 130, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\wolfe\microblog\app\templates\user_popup.html", line 23, in top-level template code
+    {{ form.hidden_tag() }}
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\jinja2\environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'form' is undefined
+2022-12-26 15:58:10,106 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:75]
+2022-12-28 11:16:48,372 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:75]
+2022-12-28 11:16:56,882 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:75]
+2022-12-28 11:32:28,962 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:75]
+2022-12-28 11:34:03,597 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:75]
+2022-12-28 11:37:40,073 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:75]
+2022-12-28 11:38:08,858 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:75]
+2022-12-28 11:39:58,829 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:75]
+2022-12-28 11:41:44,021 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:75]
+2022-12-28 11:56:11,632 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:75]
+2022-12-28 11:56:23,183 ERROR: Exception on /messages [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
 Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -76,74 +132,12 @@ Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\api\users.py", line 7, in get_user
-    return jsonify(User.query.get_or_404(id).to_dict())
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\models.py", line 177, in to_dict
-    'last_seen': self.last_seen.isoformat() + 'Z',
-                 ^^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'NoneType' object has no attribute 'isoformat'
-2023-01-03 15:50:16,048 ERROR: Exception on /api/users/1 [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
-Traceback (most recent call last):
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
-    response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\api\users.py", line 7, in get_user
-    return jsonify(User.query.get_or_404(id).to_dict())
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\models.py", line 177, in to_dict
-    'last_seen': self.last_seen.isoformat() + 'Z',
-                 ^^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'NoneType' object has no attribute 'isoformat'
-2023-01-03 15:50:36,603 ERROR: Exception on /api/users/1 [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
-Traceback (most recent call last):
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
-    response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\api\users.py", line 7, in get_user
-    return jsonify(User.query.get_or_404(id).to_dict())
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\models.py", line 177, in to_dict
-    'last_seen': self.last_seen.isoformat() + 'Z',
-                 ^^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'NoneType' object has no attribute 'isoformat'
-2023-01-03 16:00:20,460 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:77]
-2023-01-03 16:06:24,175 ERROR: Exception on /api/users/1 [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
-Traceback (most recent call last):
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
-    response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\api\users.py", line 7, in get_user
-    return jsonify(User.query.get_or_404(id).to_dict())
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\models.py", line 177, in to_dict
-    'last_seen': self.last_seen.isoformat() + 'Z',
-                 ^^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'NoneType' object has no attribute 'isoformat'
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\app\main\routes.py", line 190, in messages
+    Message.timestamp.desc()).paginate(
+                              ^^^^^^^^^
+TypeError: Query.paginate() takes 1 positional argument but 4 were given
+2022-12-28 12:02:57,286 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:75]
+2022-12-28 12:03:05,944 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:75]

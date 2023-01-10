@@ -1,4 +1,4 @@
-2022-12-25 15:12:07,618 ERROR: Exception on /user/John/popup [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
+2022-12-18 15:01:23,243 ERROR: Exception on /search [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
 Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -15,26 +15,32 @@ Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\main\routes.py", line 88, in user_popup
-    return render_template('user_popup.html', user=user)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\templating.py", line 147, in render_template
-    return _render(app, template, context)
+  File "C:\Users\wolfe\microblog\app\main\routes.py", line 154, in search
+    posts, total = Post.search(g.search_form.q.data, page,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\app\models.py", line 15, in search
+    ids, total = query_index(cls.__tablename__, expression, page, per_page)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\app\search.py", line 39, in query_index
+    search = current_app.OpenSearch.search(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\client\utils.py", line 178, in _wrapped
+    return func(*args, params=params, headers=headers, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\client\__init__.py", line 1551, in search
+    return self.transport.perform_request(
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\templating.py", line 130, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\jinja2\environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\jinja2\environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "C:\Users\wolfe\microblog\app\templates\user_popup.html", line 23, in top-level template code
-    {{ form.hidden_tag() }}
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\jinja2\environment.py", line 485, in getattr
-    return getattr(obj, attribute)
-           ^^^^^^^^^^^^^^^^^^^^^^^
-jinja2.exceptions.UndefinedError: 'form' is undefined
-2022-12-25 15:12:13,170 ERROR: Exception on /user/John/popup [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\transport.py", line 408, in perform_request
+    raise e
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\transport.py", line 369, in perform_request
+    status, headers_response, data = connection.perform_request(
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\connection\http_urllib3.py", line 266, in perform_request
+    self._raise_error(
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\connection\base.py", line 301, in _raise_error
+    raise HTTP_EXCEPTIONS.get(status_code, TransportError)(
+opensearchpy.exceptions.NotFoundError: NotFoundError(404, 'index_not_found_exception', 'no such index [post]', post, index_or_alias)
+2022-12-18 15:07:15,949 ERROR: Exception on /search [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
 Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -51,26 +57,32 @@ Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\main\routes.py", line 88, in user_popup
-    return render_template('user_popup.html', user=user)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\templating.py", line 147, in render_template
-    return _render(app, template, context)
+  File "C:\Users\wolfe\microblog\app\main\routes.py", line 154, in search
+    posts, total = Post.search(g.search_form.q.data, page,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\app\models.py", line 15, in search
+    ids, total = query_index(cls.__tablename__, expression, page, per_page)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\app\search.py", line 39, in query_index
+    search = current_app.OpenSearch.search(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\client\utils.py", line 178, in _wrapped
+    return func(*args, params=params, headers=headers, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\client\__init__.py", line 1551, in search
+    return self.transport.perform_request(
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\templating.py", line 130, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\jinja2\environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\jinja2\environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "C:\Users\wolfe\microblog\app\templates\user_popup.html", line 23, in top-level template code
-    {{ form.hidden_tag() }}
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\jinja2\environment.py", line 485, in getattr
-    return getattr(obj, attribute)
-           ^^^^^^^^^^^^^^^^^^^^^^^
-jinja2.exceptions.UndefinedError: 'form' is undefined
-2022-12-25 15:12:18,151 ERROR: Exception on /user/John/popup [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\transport.py", line 408, in perform_request
+    raise e
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\transport.py", line 369, in perform_request
+    status, headers_response, data = connection.perform_request(
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\connection\http_urllib3.py", line 266, in perform_request
+    self._raise_error(
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\connection\base.py", line 301, in _raise_error
+    raise HTTP_EXCEPTIONS.get(status_code, TransportError)(
+opensearchpy.exceptions.NotFoundError: NotFoundError(404, 'index_not_found_exception', 'no such index [post]', post, index_or_alias)
+2022-12-18 15:08:01,716 ERROR: Exception on /search [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
 Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -87,58 +99,32 @@ Traceback (most recent call last):
   File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\main\routes.py", line 88, in user_popup
-    return render_template('user_popup.html', user=user)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\templating.py", line 147, in render_template
-    return _render(app, template, context)
+  File "C:\Users\wolfe\microblog\app\main\routes.py", line 154, in search
+    posts, total = Post.search(g.search_form.q.data, page,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\app\models.py", line 15, in search
+    ids, total = query_index(cls.__tablename__, expression, page, per_page)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\app\search.py", line 39, in query_index
+    search = current_app.OpenSearch.search(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\client\utils.py", line 178, in _wrapped
+    return func(*args, params=params, headers=headers, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\client\__init__.py", line 1551, in search
+    return self.transport.perform_request(
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\templating.py", line 130, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\jinja2\environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\jinja2\environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "C:\Users\wolfe\microblog\app\templates\user_popup.html", line 23, in top-level template code
-    {{ form.hidden_tag() }}
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\jinja2\environment.py", line 485, in getattr
-    return getattr(obj, attribute)
-           ^^^^^^^^^^^^^^^^^^^^^^^
-jinja2.exceptions.UndefinedError: 'form' is undefined
-2022-12-25 15:12:28,472 ERROR: Exception on /user/John/popup [GET] [in C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py:1741]
-Traceback (most recent call last):
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
-    response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\app\main\routes.py", line 88, in user_popup
-    return render_template('user_popup.html', user=user)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\templating.py", line 147, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\flask\templating.py", line 130, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\jinja2\environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\jinja2\environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "C:\Users\wolfe\microblog\app\templates\user_popup.html", line 23, in top-level template code
-    {{ form.hidden_tag() }}
-  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\jinja2\environment.py", line 485, in getattr
-    return getattr(obj, attribute)
-           ^^^^^^^^^^^^^^^^^^^^^^^
-jinja2.exceptions.UndefinedError: 'form' is undefined
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\transport.py", line 408, in perform_request
+    raise e
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\transport.py", line 369, in perform_request
+    status, headers_response, data = connection.perform_request(
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\connection\http_urllib3.py", line 266, in perform_request
+    self._raise_error(
+  File "C:\Users\wolfe\microblog\.venv\Lib\site-packages\opensearchpy\connection\base.py", line 301, in _raise_error
+    raise HTTP_EXCEPTIONS.get(status_code, TransportError)(
+opensearchpy.exceptions.NotFoundError: NotFoundError(404, 'index_not_found_exception', 'no such index [post]', post, index_or_alias)
+2022-12-18 15:13:30,474 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:75]
+2022-12-20 20:03:25,404 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:75]
+2022-12-20 20:04:48,864 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:75]
+2022-12-20 20:04:57,122 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:75]
