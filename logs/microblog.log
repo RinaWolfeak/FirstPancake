@@ -64,3 +64,5 @@ Traceback (most recent call last):
                               ^^^^^^^^^
 TypeError: Query.paginate() got an unexpected keyword argument 'ppage'
 2022-12-28 12:19:14,381 INFO: Microblog startup [in C:\Users\wolfe\microblog\app\__init__.py:75]
+2023-01-23 17:10:06,460 INFO: Microblog startup [in /workspaces/FirstPancake/app/__init__.py:73]
+2023-01-23 17:11:18,756 INFO: Microblog startup [in /workspaces/FirstPancake/app/__init__.py:73]
