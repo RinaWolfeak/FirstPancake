@@ -87,6 +87,7 @@ def user_popup(username):
     user = User.query.filter_by(username=username).first_or_404()
     return render_template('user_popup.html', user=user)
 
+
 @bp.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
 def edit_profile():
@@ -165,6 +166,7 @@ def search():
     return render_template('search.html', title=_('Search'), posts=posts,
                            next_url=next_url, prev_url=prev_url)
 
+
 @bp.route('/send_message/<recipient>', methods=['GET', 'POST'])
 @login_required
 def send_message(recipient):
@@ -180,7 +182,8 @@ def send_message(recipient):
         return redirect(url_for('main.user', username=recipient))
     return render_template('send_message.html', title=_('Send Message'),
                            form=form, recipient=recipient)
-                        
+
+
 @bp.route('/messages')
 @login_required
 def messages():
@@ -199,6 +202,7 @@ def messages():
     return render_template('messages.html', messages=messages.items,
                            next_url=next_url, prev_url=prev_url)
 
+
 @bp.route('/notifications')
 @login_required
 def notifications():
@@ -210,3 +214,14 @@ def notifications():
         'data': n.get_data(),
         'timestamp': n.timestamp
     } for n in notifications])
+
+
+@bp.route('/export_posts')
+@login_required
+def export_posts():
+    if current_user.get_task_in_progress('export_posts'):
+        flash(_('An export task is currently in progress'))
+    else:
+        current_user.launch_task('export_posts', _('Exporting posts...'))
+        db.session.commit()
+    return redirect(url_for('main.user', username=current_user.username))

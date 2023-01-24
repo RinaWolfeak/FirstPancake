@@ -16,3 +16,5 @@ class Config(object):
     ADMINS = ['***REMOVED***']
     POSTS_PER_PAGE = 25
     LANGUAGES = ['en', 'ru']
+
+    REDIS_URL = os.environ.get('REDIS_URL') or 'redis://'
