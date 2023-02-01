@@ -8,3 +8,6 @@ docker run -it --rm --link my-mysql --link redis:redis-server -e 'DATABASE_URL=m
 docker run --name rq-worker -d --rm --link my-mysql --link redis:redis-server -e 'DATABASE_URL=mysql+pymysql://root:123@my-mysql:3306/my_flask_app' -e REDIS_URL=redis://redis-server:6379/0 --entrypoint venv/bin/rq flask worker -u redis://redis-server:6379/0 FirstPancake-tasks
 docker run -it --rm --link my-mysql -e 'DATABASE_URL=mysql+pymysql://root:123@my-mysql:3306/my_flask_app' flask flask db upgrade #миграция баз данных с добавлением переменной среды
 docker run --name rq-worker -d --rm --link my-mysql --link redis:redis-server -e 'DATABASE_URL=mysql+pymysql://root:123@my-mysql:3306/my_flask_app' -e REDIS_URL=redis://redis-server:6379/0 --entrypoint rq flask worker -u redis://redis-server:6379/0 flask-tasks
+Чтобы избежать проблем с кодировкой в 2.7
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
