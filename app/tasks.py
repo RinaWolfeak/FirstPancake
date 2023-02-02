@@ -1,7 +1,11 @@
-from app import create_app
+import json
+import sys
 import time
+from flask import render_template
 from rq import get_current_job
-from app.models import Task
+from app import create_app, db
+from app.models import User, Post, Task
+from app.email import send_email
 
 app = create_app()
 app.app_context().push()
@@ -9,6 +13,7 @@ app.app_context().push()
 def _set_task_progress(progress):
     job = get_current_job()
     if job:
+        print(progress)
         job.meta['progress'] = progress
         job.save_meta()
         task = Task.query.get(job.get_id())
@@ -40,5 +45,5 @@ def export_posts(user_id):
                               json.dumps({'posts': data}, indent=4))],
                 sync=True)
     except:
-    _set_task_progress(100)
+        _set_task_progress(100)
         app.logger.error('Unhandled exception', exc_info=sys.exc_info())
