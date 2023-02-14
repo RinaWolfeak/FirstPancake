@@ -4,30 +4,38 @@ services:
     build: .
     ports:
       - "5000:5000"
-    links:
-      - my-mysql:my_flask_app
-      - redis
-      #- adminer
+    depends_on:
+      - db
+    #  - adminer
     environment:
-      DATABASE_URL: mysql+pymysql://root:123@my-mysql:3306/my_flask_app
-      MYSQL_ROOT_PASSWORD: 123
-      MYSQL_DATABASE: my_flask_app
+      #MYSQL_HOST: my-mysql
+      DB_HOST: db
+      DB__PORT: 3306
+      #MYSQLX_UNIX_PORT: 33060
+      DB_USER: root
+      #DATABASE_URL: mysql+pymysql://root:123@my-mysql:3306/my_flask_app
+      DB_PASSWORD: 123
+      DB_NAME: my_flask_app
       #REDIS_URL: redis://redis-server:6379/0
+    links:
+      - db
+      - redis
+    #  - adminer
   
   redis:
     image: "redis:alpine"
     ports:
       - "6379:6379"
   
-  my-mysql:
+  db:
     image: mysql
-    #restart: always
+    restart: always
     ports:
       - "3306:3306"
-      #- "33060:33060"
+    #  - "33060:33060"
     environment:
-      MYSQL_ROOT_PASSWORD: 123
-      MYSQL_DATABASE: my_flask_app
+      - MYSQL_ROOT_PASSWORD=123
+      - MYSQL_DATABASE=my_flask_app
 
   #adminer:
   #  image: adminer
