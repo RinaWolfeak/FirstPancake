@@ -14,3 +14,4 @@ docker run --name rq-worker -d --rm --link my-mysql --link redis:redis-server -e
 Чтобы избежать проблем с кодировкой в 2.7
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+docker exec -it firstpancake_my-mysql_1 bash        #вход в запущенный контейнер

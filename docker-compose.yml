@@ -5,29 +5,37 @@ services:
     ports:
       - "5000:5000"
     depends_on:
-      - db
-    #  - adminer
+      - my-mysql
     environment:
-      #MYSQL_HOST: my-mysql
-      DB_HOST: db
-      DB__PORT: 3306
-      #MYSQLX_UNIX_PORT: 33060
-      DB_USER: root
-      #DATABASE_URL: mysql+pymysql://root:123@my-mysql:3306/my_flask_app
-      DB_PASSWORD: 123
-      DB_NAME: my_flask_app
-      #REDIS_URL: redis://redis-server:6379/0
+      DATABASE_URL: mysql+pymysql://root:123@my-mysql:3306/my_flask_app
+      REDIS_URL: redis://redis-server:6379/0
     links:
-      - db
+      - my-mysql
       - redis
-    #  - adminer
-  
+
+  flask_migration:
+    build: .
+    depends_on:
+      my-mysql:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: mysql+pymysql://root:123@my-mysql:3306/my_flask_app
+      REDIS_URL: redis://redis-server:6379/0
+    links:
+      - my-mysql
+      - redis
+    command: 
+      - flask
+      - db
+      - upgrade
+    restart: on-failure
+
   redis:
     image: "redis:alpine"
     ports:
       - "6379:6379"
   
-  db:
+  my-mysql:
     image: mysql
     restart: always
     ports:
@@ -36,9 +44,5 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=123
       - MYSQL_DATABASE=my_flask_app
-
-  #adminer:
-  #  image: adminer
-  #  restart: always
-  #  ports:
-  #    - 8080:8080
+    healthcheck:
+      test: ["CMD", 'mysqladmin', 'ping', '-h', 'localhost', '-u', 'root', '-p$$MYSQL_ROOT_PASSWORD' ]
