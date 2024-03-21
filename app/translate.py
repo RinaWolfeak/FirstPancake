@@ -23,7 +23,7 @@ def translate(text, target_language):
         "Authorization": "Bearer {0}".format(IAM_TOKEN)
     }
 
-    response = requests.post('***REMOVED***',
+    response = requests.post('https://translate.api.cloud.yandex.net/translate/v2/translate',
         json = body,
         headers = headers
     )
